@@ -8,6 +8,10 @@ namespace GraphProject
     {
         static void Main(string[] args)
         {
+            Graph<int> graph = new Graph<int>();
+
+            for (int i = 0; i < 16; ++i)
+                graph.AddNode(i);
 
         }
     }

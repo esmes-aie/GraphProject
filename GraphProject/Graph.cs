@@ -37,6 +37,8 @@ namespace GraphProject
         public List<Edge> edges { private set; get; }
         uint id_counter;
 
+       
+
         public Graph()
         {
             nodes = new List<Node>();
@@ -71,7 +73,26 @@ namespace GraphProject
             return a;
         }
 
-        // add nodes and edges
-        // Find nodes according to value
+        public delegate float FindDelegate(T a, T b);
+
+        public Node FindNode(T a_query, FindDelegate a_finder, float a_threshold = 0.0001f)
+        {
+            Node best = null;
+            float min = 0;
+
+            //for (int i = 0; i < nodes.Count; ++i)
+            //    nodes[i];
+
+            foreach(Node n in nodes)
+            {
+                float res = a_finder(a_query, n.data);
+                if((best == null || res < min) && res < a_threshold)
+                {
+                    best = n;
+                    min = res;
+                }
+            }
+            return best;
+        }
     }
 }
