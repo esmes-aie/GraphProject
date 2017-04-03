@@ -73,15 +73,19 @@ namespace GraphProject
             return a;
         }
 
-        public delegate float FindDelegate(T a, T b);
+        public Edge AddEdge(T a_start, T a_end, FindDelegate a_finder,
+                            float a_threshold = 0.0001f, float a_weight = 1, bool undirected = true)
+        {        
+            return AddEdge(FindNode(a_start, a_finder, a_threshold),
+                           FindNode(a_end, a_finder), a_weight, undirected);
+        }
+
+        public delegate float FindDelegate(T a, T b);        
 
         public Node FindNode(T a_query, FindDelegate a_finder, float a_threshold = 0.0001f)
         {
             Node best = null;
             float min = 0;
-
-            //for (int i = 0; i < nodes.Count; ++i)
-            //    nodes[i];
 
             foreach(Node n in nodes)
             {
