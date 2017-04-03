@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GraphProject
 {
     public class Graph<T>
-    {
+    {        
+        [DebuggerDisplay("id = {uid}, val = {data}")]
         public class Node
         {            
             public Node(T a_data, uint a_id)
@@ -20,6 +22,7 @@ namespace GraphProject
             public List<Edge> edges { private set; get; }
         }
 
+        [DebuggerDisplay("start_id = {start.uid}, end_id = {end.uid}")]
         public class Edge
         {
             public Edge(Node a_start, Node a_end, float a_weight = 1)
