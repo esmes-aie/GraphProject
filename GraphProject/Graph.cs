@@ -37,7 +37,7 @@ namespace GraphProject
         public List<Edge> edges { private set; get; }
         uint id_counter;
 
-        Node AddNode(T a_data)
+        public Node AddNode(T a_data)
         {
             // TODO: Try and ensure there are no duplicate references.
             Node n = new Node(a_data, id_counter);
@@ -46,6 +46,23 @@ namespace GraphProject
             return n;
         }
 
+        public Edge AddEdge(Node a_start, Node a_end, float a_weight = 1, bool undirected = true)
+        {
+            if (!nodes.Contains(a_start) || !nodes.Contains(a_end))
+                return null;
+                
+            Edge a = new Edge(a_start, a_end, a_weight);
+            a_start.edges.Add(a);
+            edges.Add(a);
+
+            if(undirected)
+            { 
+                Edge b = new Edge(a_end, a_start, a_weight);
+                a_end.edges.Add(b);
+                edges.Add(b);
+            }
+            return a;
+        }
 
         // add nodes and edges
         // Find nodes according to value
