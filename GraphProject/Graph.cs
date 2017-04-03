@@ -37,6 +37,13 @@ namespace GraphProject
         public List<Edge> edges { private set; get; }
         uint id_counter;
 
+        public Graph()
+        {
+            nodes = new List<Node>();
+            edges = new List<Edge>();
+            id_counter = 0;
+        }
+
         public Node AddNode(T a_data)
         {
             // TODO: Try and ensure there are no duplicate references.
