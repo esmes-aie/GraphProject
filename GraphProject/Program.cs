@@ -30,12 +30,16 @@ namespace GraphProject
 
             Solver<int> solver = new Solver<int>();
             solver.graph = graph;
-            solver.init(0, diff);
+            solver.init(0, 4, diff);
 
             Console.WriteLine("Starting the Search:");
             while (solver.step());
+
+            
             Console.WriteLine("\nPress enter to close.");
-            Console.ReadLine();     
+            Console.ReadLine();
+
+            var finalPath = solver.solution;
         }
     }
 }
