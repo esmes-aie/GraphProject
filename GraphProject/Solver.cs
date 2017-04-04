@@ -17,7 +17,8 @@ namespace GraphProject
 
         private Meta[] metadata;
         private Stack<Graph<T>.Node> frontier;
-        
+        //private Queue<Graph<T>.Node> frontier;
+
 		// Cleanup, setup and start our search.
         public void init(T start, Graph<T>.FindDelegate searcher)
         {
@@ -34,17 +35,18 @@ namespace GraphProject
 
 		public bool step()
         {
-            // Pop data off the frontier.
             var current = frontier.Pop();
-            // update the metadata for the node that was popped.
 
-            // Print the id of the node.
-            Console.Write(current.uid);
+            metadata[current.uid].state = Meta.VisitState.explored;
+
+            Console.Write(current.uid + " ");
             
-            // add all of the 'undiscovered' neighbors of that node onto the stack.
-            // update their metadata to 'frontier' status.
-
-
+			foreach(var e in current.edges)
+				if(metadata[e.end.uid].state == Meta.VisitState.undiscovered)
+				{
+		            frontier.Push(e.end);
+	                metadata[e.end.uid].state = Meta.VisitState.frontier;
+				}
             return frontier.Count != 0;
         }
 	}
