@@ -6,19 +6,19 @@ using System.Text;
 namespace GraphProject
 {
     public class Graph<T>
-    {        
+    {
         [DebuggerDisplay("id = {uid}, val = {data}")]
         public class Node
-        {            
+        {
             public Node(T a_data, uint a_id)
             {
-                data  = a_data;
+                data = a_data;
                 edges = new List<Edge>();
                 uid = a_id;
             }
 
-            public uint uid         { private set; get; }
-            public T data           { private set; get; }
+            public uint       uid   { private set; get; }
+            public T          data  { private set; get; }
             public List<Edge> edges { private set; get; }
         }
 
@@ -39,7 +39,6 @@ namespace GraphProject
         public List<Node> nodes { private set; get; }
         public List<Edge> edges { private set; get; }
         uint id_counter;
-
        
 
         public Graph()
