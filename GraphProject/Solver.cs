@@ -71,12 +71,9 @@ namespace GraphProject
 
             metadata[current.uid].state = Meta.VisitState.explored;
 
-			// stop if we've reached the goal.			
-            Console.Write(current.uid + " ");
-
+			// stop if we've reached the goal.
 			if(current.uid == goalNode.uid)
             {
-                Console.Write("Goal reached!");
                 return false;
             }
             
