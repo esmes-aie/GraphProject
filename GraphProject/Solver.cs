@@ -32,15 +32,20 @@ namespace GraphProject
             frontier.Push(snode);
         }
 
-        // represent 1 loop of the search
-			// pop a node from the stack
-			// print the node's ID to the screen
-			// Set the node's metadata to explored
-			// Add all of the node's undiscovered neighbors to the stack
 		public bool step()
         {
-            Console.Write(frontier.Peek().uid);
-            return false;
+            // Pop data off the frontier.
+            var current = frontier.Pop();
+            // update the metadata for the node that was popped.
+
+            // Print the id of the node.
+            Console.Write(current.uid);
+            
+            // add all of the 'undiscovered' neighbors of that node onto the stack.
+            // update their metadata to 'frontier' status.
+
+
+            return frontier.Count != 0;
         }
 	}
 }
